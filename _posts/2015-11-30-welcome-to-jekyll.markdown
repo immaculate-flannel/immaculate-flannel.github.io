@@ -12,6 +12,11 @@ $$
 \mathcal{A}==\mathcal{B}
 $$
 
+\\[
+\mathcal{A}==\mathcal{B}
+\\]
+
+
 Jekyll also offers powerful support for code snippets:
 
 {% highlight ruby %}

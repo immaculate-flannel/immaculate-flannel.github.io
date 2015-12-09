@@ -1,0 +1,427 @@
+/**
+ * Syntax highlighting styles
+ */
+
+// $bracketContentsOptions: underline
+// $tagsForeground: #B6DFEB
+// $tagsOptions: underline
+// $activeGuide: #777777
+// $stackGuide:  #71787c 66 // 0.4
+// $guide:       #71787c 66 // 0.4
+// source.php
+// background-color:: #1c1c1c;
+// source.asp
+// background-color:: #1c1c1c;
+// source.ruby
+// background-color:: #1c1c1c;
+// source.python
+// background-color:: #1c1c1c;
+// source.perl
+// background-color:: #1c1c1c;
+// source.css
+// background-color:: #22221c;
+// source.js
+// background-color:: #1c221c;
+// punctuation.whitespace
+// background-color:: #1c1c1c;
+// text
+// background-color:: #1c1c22;
+
+
+
+ // Theme specific vars
+ $opacity:    0.8;
+ $blur:       15px;
+ $contrast:   200%;
+ $saturation: 200%;
+
+ // General colors
+
+ $syntax-text-color:                       #71787c;
+ // $foreground:                           #777777;
+ $syntax-background-color:                 #1c1c1c;
+ // $background:                           #1c1c1c;
+ $syntax-cursor-color:                     #D8D9D1;
+ // $caret:                                #D8D9D1;
+ $syntax-selection-color:                  #223F63;
+ // %selection:                            #223F63;
+ // $selectionForeground                   #ececec;
+
+
+ // Guide colors
+ $syntax-wrap-guide-color:                 #444444;
+ $syntax-indent-guide-color:               #444444;
+ $syntax-invisible-character-color:        #444444;
+ // $invisibles                            #E5E5B2;
+
+ // For find and replace markers
+ $syntax-result-marker-color:              #E5E5B2;
+
+ $syntax-result-marker-color-selected:     #71787c;
+
+ // Gutter colors
+ $syntax-gutter-text-color:                #71787c;
+ $syntax-gutter-text-color-selected:       #71787c;
+ $syntax-gutter-background-color:          #1c1c1c;
+ $syntax-gutter-background-color-selected: #282828;
+ // $lineHighlight                         #282828
+
+
+ // For git gutter info.
+ // markup.inserted.git_gutter #6cc644
+ // markup.changed.git_gutter  #ff984c
+ // markup.deleted.git_gutter  #ff7Dbf
+
+
+ // For git diff info
+ // These are static and were not extracted from your textmate theme
+ $syntax-color-renamed:  #96CBFE;
+ // markup.inserted
+ // foreground #12ffa9 a0
+ // background-color: #22ffa9 12
+ $syntax-color-added:    #A8FF60;
+ // meta.diff.range
+ // markup.changed
+ // foreground #a1784c ff
+ // background-color: #a1784c 1b
+ $syntax-color-modified: #E9C062;
+ // markup.deleted
+ // foreground #ff4377 a0
+ // background-color: #ff3399 12
+ $syntax-color-removed:  #CC6666;
+
+ // meta.diff.header
+ // foreground #a1784c ff
+ // background-color: #a1784c 1b
+
+// source.git-diff.command
+// foreground #bB7Dbf ff
+// background-color: #9B9FfD 10
+
+// SublimeLinter Error
+// sublimelinter.mark.error #D02000
+
+// SublimeLinter Warning
+// sublimelinter.mark.warning #DDB700
+
+// SublimeLinter Gutter Mark
+// sublimelinter.gutter-mark #FFFFFF
+
+ // @import _syntax-variables.scss;
+
+ atom-text-editor, :host {
+   background-color: $syntax-background-color;
+   color:            $syntax-text-color;
+   -webkit-filter: contrast($contrast);
+   -webkit-filter: saturate($saturation);
+
+   .invisible-character            {color: $syntax-invisible-character-color;}
+
+   .indent-guide                   {color: $syntax-indent-guide-color;}
+
+   .wrap-guide                     {color: $syntax-wrap-guide-color;}
+
+   .gutter                         {color: $syntax-gutter-text-color;          background-color: $syntax-gutter-background-color;
+     .line-number {
+       &.cursor-line               {color: $syntax-gutter-text-color-selected; background-color: $syntax-gutter-background-color-selected;}
+       &.cursor-line-no-selection  {color: $syntax-gutter-text-color-selected;}
+     }
+   }
+
+   .search-results .marker .region {background-color: transparent; border: $syntax-result-marker-color;}
+   .search-results .marker.current-result .region {border: $syntax-result-marker-color-selected;}
+ }
+
+ atom-text-editor.is-focused, :host {
+   .cursor {border-color: $syntax-cursor-color;}
+   .selection .region {background-color: $syntax-selection-color;}
+   .line-number.cursor-line-no-selection, .line.cursor-line {background-color: #282828;}
+ }
+
+  // comment foreground #a1784c              ee
+  // comment foreground rgba(161, 120, 076, 0.93)
+  // comment background-color: #a1784c              20
+  // comment background-color: rgba(161, 120, 076, 0.13)
+ // .comment                        {color: rgba(161, 120, 076, 1.00); text-shadow: 0px 0px $blur rgba(161, 120, 076, $opacity); font-weight: bold; font-style: italic;} //Comment
+ .c                              { color: rgba(161, 120, 076, 1.00); background-color: rgba(161, 120, 076, 0.13); font-weight: bold; font-style: italic;}
+
+ // string foreground #aaafeb              ee
+ // string foreground rgba(170, 175, 235, 0.93)
+ // string background-color: #aaafeb              09
+ // string background-color: rgba(170, 175, 235, 0.04)
+ // .string                         {color: rgba(170, 175, 235, 0.93); text-shadow: 0px 0px $blur rgba(170, 175, 219, $opacity);}
+ .s                              { color: rgba(170, 175, 235, 0.93); background-color: rgba(170, 175, 235, 0.04);}
+
+ // Number
+ // constant.numeric foreground #8fc2bb              bb
+ // constant.numeric foreground rgba(143, 194, 187, 0.73)
+ // constant.numeric background-color: #8fc2bb              0f
+ // constant.numeric background-color: rgba(143, 194, 187, 0.06)
+ //.constant.numeric               {color: rgba(143, 194, 187, 0.73); text-shadow: 0px 0px $blur rgba(119, 194, 187, $opacity);}
+ .m                              {color: rgba(143, 194, 187, 0.73); background-color: rgba(143, 194, 187, 0.06);}
+
+// .constant.character             {color: rgba(034, 255, 153, 0.87); text-shadow: 0px 0px $blur rgba(034, 200, 153, $opacity);}
+ .sc                             { color: rgba(034, 255, 153, 0.87); background-color: rgba(034, 200, 153, 0.06);}
+
+// .constant.other                 {color: rgba(034, 255, 153, 0.87); text-shadow: 0px 0px $blur rgba(034, 200, 153, $opacity);}
+ .l                              { color: rgba(034, 255, 153, 0.87); background-color: rgba(034, 200, 153, 0.06);}
+
+ // Built-in Constant
+ // constant.language foreground #bDbe82              ff
+ // constant.language foreground rgba(189, 190, 130, 1.00)
+ // constant.language background-color: #bDbe82              0f
+ // constant.language background-color: rgba(189, 190, 130, 0.06)
+ // .constant.language              {color: rgba(189, 190, 130, 1.00); text-shadow: 0px 0px $blur rgba(189, 190, 130, $opacity);}
+ .kc                             { color: rgba(189, 190, 130, 1.00); background-color: rgba(189, 190, 130, 0.06);}
+
+ // Storage modifier
+ // storage foreground #8B6ccf              ff
+ // storage foreground rgba(139, 108, 207, 1.00)
+ // storage background-color: #8B5Ddf              11
+ // storage background-color: rgba(139, 093, 223, 0.07)
+ .storage                        {color: rgba(139, 108, 207, 1.00); text-shadow: 0px 0px $blur rgba(139, 093, 223, $opacity);}
+
+ // function
+ // meta.function-call  foreground #cBaf6c              ff
+ // meta.function-call  foreground rgba(203, 175, 108, 1.00)
+ // meta.function-call  background-color: #cBaf6c              11
+ // meta.function-call  background-color: rgba(203, 175, 108, 0.07)
+ .meta.function-call             {color: rgba(203, 175, 108, 1.00); text-shadow: 0px 0px $blur rgba(203, 175, 108, $opacity);}
+
+ // Support Function
+ // support.function foreground #ADAeB2              ff
+ // support.function foreground rgba(173, 174, 178, 1.00)
+ // support.function background-color: #bDbe82              0f
+ // support.function background-color: rgba(189, 190, 130, 0.06)
+ .support.function               {color: rgba(173, 174, 178, 1.00); text-shadow: 0px 0px $blur rgba(189, 190, 130, $opacity);}
+
+ //name.entity
+.ni                              { color: rgba(173, 174, 178, 1.00); background-color: rgba(189, 190, 130, 0.06);}
+
+
+ // External Symbol
+ // variable.other.external-symbol foreground #BBDFDD              ff
+ // variable.other.external-symbol foreground rgba(187, 223, 221, 1.00)
+ // variable.other.external-symbol background-color: #BBDFDD              0a
+ // variable.other.external-symbol background-color: rgba(187, 223, 221, 0.04)
+ .variable.other.external-symbol {color: rgba(187, 223, 221, 1.00); text-shadow: 0px 0px $blur rgba(187, 223, 221, $opacity);}
+
+//name.label
+ .variable.other.external-symbol {color: rgba(187, 223, 221, 1.00); text-shadow: 0px 0px $blur rgba(187, 223, 221, $opacity);}
+
+//name.decorator #A6E22A rgba(166, 226, 042, 0.93)
+.nd                              { color: rgba(166, 226, 042, 0.93); background-color: rgba(166, 226, 042, 0.06);}
+
+ // Variable
+ // variable.language foreground #3aafff              ff
+ // variable.language foreground rgba(058, 175, 255, 1.00)
+ // variable.language background-color: #3aafff              0f
+ // variable.language background-color: rgba(058, 175, 255, 0.06)
+ .variable.language              {color: rgba(058, 175, 255, 1.00); text-shadow: 0px 0px $blur rgba(058, 175, 255, $opacity);}
+
+ // Variable
+ // variable.other foreground #3aafff              ff
+ // variable.other foreground rgba(058, 175, 255, 1.00)
+ // variable.other background-color: #3aafff              0f
+ // variable.other background-color: rgba(058, 175, 255, 0.06)
+ .variable.other                 {color: rgba(058, 175, 255, 1.00); text-shadow: 0px 0px $blur rgba(058, 175, 255, $opacity);}
+
+// name.constant
+.no                              {color: rgba(058, 175, 255, 1.00); background-color: rgba(058, 175, 255, 0.06);}
+
+ // Variable Assignment
+ // variable.parameter foreground #3aafff              ff
+ // variable.parameter foreground rgba(058, 175, 255, 1.00)
+ // variable.parameter background-color: #3aafff              0f
+ // variable.parameter background-color: rgba(058, 175, 255, 0.06)
+ .variable.parameter              {color: rgba(051, 182, 169, 1.00); text-shadow: 0px 0px $blur rgba(005, 214, 249, $opacity);}
+
+ // Variable Assignment
+ // variable.assignment foreground #3aafff              ff
+ // variable.assignment foreground rgba(058, 175, 255, 1.00)
+ // variable.assignment background-color: #3aafff              0f
+ // variable.assignment background-color: rgba(058, 175, 255, 0.06)
+ .variable.assignment             {color: rgba(051, 182, 169, 1.00); text-shadow: 0px 0px $blur rgba(005, 214, 249, $opacity);}
+
+// keyword namespace
+.kn                               { color: rgba(051, 182, 169, 1.00); background-color: rgba(005, 214, 249, $opacity);}
+
+// keyword declaration
+.kd                               { color: rgba(051, 182, 169, 1.00); background-color: rgba(005, 214, 249, $opacity);}
+
+// keyword reserved
+.kr                   { color: rgba(051, 182, 169, 1.00); background-color: rgba(005, 214, 249, 0.06);}
+
+ // keyword
+ // keyword foreground #bB7Dbf              ff
+ // keyword foreground rgba(187, 125, 191, 1.00)
+ // keyword background-color: #9B9FfD              10
+ // keyword background-color: rgba(155, 159, 253, 0.06)
+ // .keyword                        {color: rgba(187, 125, 191, 1.00); text-shadow: 0px 0px $blur rgba(155, 159, 253, $opacity);}
+ .k                              { color: rgba(187, 125, 191, 1.00); background-color: rgba(155, 159, 253, 0.06);}
+
+ // keyword
+ // keyword.operator foreground #bB7Dbf              ff
+ // keyword.operator foreground rgba(187, 125, 191, 1.00)
+ // keyword.operator background-color: #9B9FfD              10
+ // keyword.operator background-color: rgba(155, 159, 253, 0.06)
+ //.keyword.operator               {color: rgba(187, 125, 191, 1.00); text-shadow: 0px 0px $blur rgba(155, 159, 253, $opacity);}
+ .o                              { color: rgba(187, 125, 191, 1.00); background-color: rgba(155, 159, 253, 0.06);}
+
+ // keyword
+ // keyword.control foreground #cB5F5D              f0
+ // keyword.control foreground rgba(203, 095, 093, 0.94)
+ // keyword.control background-color: #cB5F5D              10
+ // keyword.control background-color: rgba(203, 095, 093, 0.06)
+ // .keyword.control                {color: rgba(203, 095, 093, 0.94); text-shadow: 0px 0px $blur rgba(203, 095, 093, $opacity);}
+ .ow                             { color: rgba(203, 095, 093, 0.94); background-color: rgba(203, 095, 093, 0.06);}
+
+ .entity {
+
+   // Type Name
+   // entity.name.type foreground #af77a9              ee
+   // entity.name.type foreground rgba(175, 119, 169, 0.93)
+   // entity.name.type background-color: #af77a9              0d
+   // entity.name.type background-color: rgba(175, 119, 169, 0.05)
+   //&.name.type                   {color: rgba(175, 119, 169, 0.93); text-shadow: 0px 0px $blur rgba(175, 119, 169, $opacity);}
+   .kt                           { color: rgba(175, 119, 169, 0.93); background-color: rgba(175, 119, 169, 0.05);}
+
+   // Class Name
+   // entity.name.class foreground #ff4377              ff
+   // entity.name.class foreground rgba(255, 067, 119, 1.00)
+   // entity.name.class background-color: #ff3399              16
+   // entity.name.class background-color: rgba(255, 051, 153, 0.09)
+   //&.name.class                  {color: rgba(185, 152, 223, 1.00); text-shadow: 0px 0px $blur rgba(185, 152, 223, $opacity);}
+   .nc                             { color: rgba(185, 152, 223, 1.00); background-color: rgba(185, 152, 223, 0.09);}
+
+   // Structure Name
+   // entity.name.structure foreground #22ff99              df
+   // entity.name.structure foreground rgba(034, 255, 153, 0.87)
+   // entity.name.structure background-color: #B998DF              0a
+   // entity.name.structure background-color: rgba(185, 152, 223, 0.04)
+   &.name.structure              {color: rgba(034, 255, 153, 0.87); text-shadow: 0px 0px $blur rgba(185, 152, 223, $opacity);}
+
+   // Tag name
+   // entity.name.tag foreground #49a6d2              ff
+   // entity.name.tag foreground rgba(073, 166, 210, 1.00)
+   // entity.name.tag background-color: #49a6d2              12
+   // entity.name.tag background-color: rgba(073, 166, 210, 0.07)
+   //&.name.tag                    {color: rgba(073, 166, 210, 1.00); text-shadow: 0px 0px $blur rgba(073, 166, 210, $opacity);}
+   .nt                             { color: rgba(073, 166, 210, 1.00); background-color: rgba(073, 166, 210, 0.07);}
+
+   // Function Name
+   // entity.name.function foreground #12ffa9              f7
+   // entity.name.function foreground rgba(018, 255, 169, 0.97)
+   // entity.name.function background-color: #22ffa9              12
+   // entity.name.function background-color: rgba(034, 255, 169, 0.07)
+   //&.name.function               {color: rgba(018, 255, 169, 0.97); text-shadow: 0px 0px $blur rgba(34, 255, 169, $opacity);}
+   .nf                           {color: rgba(018, 255, 169, 0.97); background-color: rgba(034, 255, 169, 0.07);}
+
+   // IO Function
+   // entity.name.function.io foreground #DFB3AC              ff
+   // entity.name.function.io foreground rgba(223, 179, 172, 1.00)
+   // entity.name.function.io background-color: #DFB3AC              0a
+   // entity.name.function.io background-color: rgba(223, 179, 172, 0.04)
+   &.name.function.io            {color: #DFB3AC; text-shadow: 0px 0px $blur rgba(223, 179, 172, $opacity);}
+
+   // Misc Function
+   // entity.name.function.misc foreground #E3E4A9              ff
+   // entity.name.function.misc foreground rgba(227, 228, 169, 1.00)
+   // entity.name.function.misc background-color: #E3E4A9              0a
+   // entity.name.function.misc background-color: rgba(227, 228, 169, 0.04)
+   &.name.function.misc          {color: rgba(227, 228, 169, 1.00); text-shadow: 0px 0px $blur rgba(227, 228, 169, $opacity);}
+
+// name.builtin
+.nb                              {color: rgba(227, 228, 169, 1.00); background-color: rgba(227, 228, 169, 0.04);}
+
+   // Predicate Function
+   // entity.name.function.predicate foreground #A5DF93              ff
+   // entity.name.function.predicate foreground rgba(165, 223, 147, 1.00)
+   // entity.name.function.predicate background-color: #A5DF93              0a
+   // entity.name.function.predicate background-color: rgba(165, 223, 147, 0.04)
+   &.name.function.predicate     {color: rgba(165, 223, 147, 1.00); text-shadow: 0px 0px $blur rgba(165, 223, 147, $opacity);}
+
+   // namespace
+   .nn     {color: rgba(165, 223, 147, 1.00); background-color: rgba(165, 223, 147, 0.04);}
+
+
+   // Tag attribute
+   // entity.other.attribute-name foreground #4986c2              cc
+   // entity.other.attribute-name foreground rgba(073, 134, 194, 0.80)
+   // entity.other.attribute-name background-color: #4986c2              09
+   // entity.other.attribute-name background-color: rgba(073, 134, 194, 0.04)
+   //&.other.attribute-name        {color: rgba(073, 134, 194, 0.8); text-shadow: 0px 0px $blur rgba(73, 134, 194, $opacity);}
+   .na                           { color: rgba(073, 134, 194, 0.8); background-color: rgba(073, 134, 194, 0.04);}
+ } //end entity
+
+ // ?Class Name?
+ // meta.class foreground #ff4377              ff
+ // meta.class foreground rgba(255, 067, 119, 1.00)
+ // meta.class background-color: #ff3399              16
+ // meta.class background-color: rgba(255, 051, 153, 0.09)
+ .meta.class                     {color: rgba(255, 067, 119, 1.00);text-shadow: 0px 0px $blur rgba(255, 51, 153, $opacity);}
+
+ //name.property
+ .py                     { color: rgba(255, 067, 119, 1.00); background-color: rgba(255, 051, 153, 0.09);}
+
+ // Class Name
+ // entity.name.class foreground #ff4377              ff
+ // entity.name.class foreground rgba(255, 067, 119, 1.00)
+ // entity.name.class background-color: #ff3399              16
+ // entity.name.class background-color: rgba(255, 051, 153, 0.09)
+ .entity.name.class              {color: rgba(255, 067, 119, 1.00);text-shadow: 0px 0px $blur rgba(255, 51, 153, $opacity);}
+
+ // ?Class Name?
+ // entity.name.type.class foreground #ff4377              ff
+ // entity.name.type.class foreground rgba(255, 067, 119, 1.00)
+ // entity.name.type.class background-color: #ff3399              16
+ // entity.name.type.class background-color: rgba(255, 051, 153, 0.09)
+ .entity.name.type.class         {color: rgba(255, 067, 119, 1.00);text-shadow: 0px 0px $blur rgba(255, 51, 153, $opacity);}
+
+ // Includes ?aka? Support Class
+ // support.other.namespace
+ // foreground #ef6aa7           dd
+ // foreground rgba(239, 106, 167, 0.87)
+ // background-color: #ef6aa7           10
+ // background-color: rgba(239, 106, 167, .06)
+ //.support.class                  {color: rgba(239, 106, 167, 0.87);   text-shadow: 0px 0px $blur rgba(239, 106, 167, $opacity);}
+ .ne                  { color: rgba(239, 106, 167, 0.87);   background-color: rgba(239, 106, 167, .06);}
+
+ // Invalid
+ // invalid foreground #DFDFD5              ff
+ // invalid foreground rgba(223, 223, 213, 1.00)
+ // invalid background-color: #CC1B27              ff
+ // invalid background-color: rgba(204, 027, 039, 1.00)
+ //.invalid                        {color: rgba(223, 223, 213, 1.00);    text-shadow: 0px 0px $blur rgba(204, 027, 039, 1.00); }
+ .err                            {color: rgba(223, 223, 213, 1.00);    background-color: rgba(204, 027, 039, 1.00); }
+
+ // String embedded-source
+ // string.source foreground #3399ff              ff
+ // string.source foreground rgba(051, 153, 255, 1.00)
+ // string.source background-color: #0099ff              0a
+ // string.source background-color: rgba(000, 153, 255, 0.04)
+ .string.source                 {color: rgba(051, 153, 255, 1.00); text-shadow: 0px 0px $blur rgba(000, 153, 255, $opacity); font-style: italic; }
+
+ // Tag name
+ // entity.name.tag foreground #49a6d2              ff
+ // entity.name.tag foreground rgba(073, 166, 210, 1.00)
+ // entity.name.tag background-color: #49a6d2              12
+ // entity.name.tag background-color: rgba(073, 166, 210, 0.07)
+ .entity.name.tag                {color: rgba(073, 166, 210, 1.00); text-shadow: 0px 0px $blur rgba(073, 166, 210, $opacity); }
+
+ .markup.heading                 {color: rgba(018, 255, 169, 0.97); text-shadow: 0px 0px $blur rgba(034, 255, 169, $opacity); font-weight: bold;}
+ .markup.italic                  {font-style: italic; color: #bB7Dbf;  text-shadow: 0px 0px $blur rgba(155, 169, 253, $opacity);}
+ .markup.bold                    {font-weight: bold; color: #bB7Dbf;  text-shadow: 0px 0px $blur rgba(155, 169, 253, $opacity);}
+ .markup.underline               {text-decoration: underline; color: rgba(139, 108, 207, 1); text-shadow: 0px 0px $blur rgba(139, 93, 223, $opacity);}
+
+ .gfm {
+   .link .entity {text-decoration: underline; color: #3aafff; text-shadow: 0px 0px $blur rgba(58, 175, 255, $opacity);}
+ }
+
+
+// Includes
+// meta.use
+// foreground #ef6aa7           dd
+// foreground rgba(239,106,167,0.87)
+// background-color: #ef6aa7           10
+// background-color: rgba(239,106,167,.06)

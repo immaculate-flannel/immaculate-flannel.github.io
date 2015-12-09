@@ -27,6 +27,28 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
+
+{% highlight python %}
+# Import smtplib for the actual sending function
+import smtplib
+
+# Import the email modules we will need
+from email.mime.text import MIMEText
+
+# Open a plain text file for reading.  For this example, assume that
+# the text file contains only ASCII characters.
+fp = open(textfile, 'rb')
+# Create a text/plain message
+msg = MIMEText(fp.read())
+fp.close()
+
+# me == the sender's email address
+# you == the recipient's email address
+msg['Subject'] = 'The contents of %s' % textfile
+msg['From'] = me
+msg['To'] = you
+{% endhighlight %}
+
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
 
 [jekyll]:      http://jekyllrb.com
